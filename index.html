@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Texas Hold'em</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+<div id="table">
+  <h1>Texas Hold'em</h1>
+
+  <div id="pot">Pot: 0</div>
+
+  <div id="community"></div>
+
+  <div id="players"></div>
+
+  <div id="controls">
+    <button id="checkBtn">Check</button>
+    <button id="callBtn">Call</button>
+    <input type="number" id="raiseInput" value="20" min="1"/>
+    <button id="raiseBtn">Raise</button>
+    <button id="foldBtn">Fold</button>
+  </div>
+
+  <div id="log"></div>
+</div>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
