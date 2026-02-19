@@ -20,16 +20,12 @@ export default class UI {
     };
   }
 
-  /**
-   * Renders a visible card
-   */
+  /** Visible card */
   cardHTML(card) {
     return `<div class="card">${card.value}${card.suit}</div>`;
   }
 
-  /**
-   * Renders a face-down card
-   */
+  /** Face-down card */
   hiddenCardHTML() {
     return `<div class="card" style="background:#222;color:#222;">🂠</div>`;
   }
@@ -45,15 +41,17 @@ export default class UI {
 
     this.playersEl.innerHTML = g.players.map((p, i) => {
 
-      // Human player = index 0
       const isHuman = i === 0;
-
-      // At showdown reveal all hands
       const revealAll = g.engine.phase === "showdown";
+      const revealBecauseFolded = p.folded;
 
-      let cardsHTML = "";
+      let cardsHTML;
 
-      if (isHuman || revealAll) {
+      // Show cards if:
+      // - human player
+      // - player folded
+      // - showdown
+      if (isHuman || revealAll || revealBecauseFolded) {
         cardsHTML = p.hand.map(c => this.cardHTML(c)).join("");
       } else {
         cardsHTML = p.hand.map(() => this.hiddenCardHTML()).join("");
